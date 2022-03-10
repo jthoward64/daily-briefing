@@ -1,0 +1,18 @@
+{
+  "name": "daily-breifing",
+  "version": "1.0.0",
+  "description": "A personal tool to generate a daily breifing",
+  "main": "index.js",
+  "type": "module",
+  "author": "Tag Howard",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "node": "^17.4.0",
+    "node-fetch": "^3.2.0"
+  }
+}
