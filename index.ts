@@ -1,11 +1,15 @@
-import { getCampusDish, getProducts } from "./CampusDishMenu.js";
 import {
-  CampusDishApiRoot,
-  MenuProduct,
-  MenuStation,
-} from "./types/CampusDish.js";
+  getCampusDish,
+  getProducts,
+  isProductImportant,
+} from "./CampusDishMenu.js";
 
-let menu = await getCampusDish();
+let menu = await getCampusDish({
+  date: new Date("3/21/2022"),
+  location: "Fresh Food Company",
+  mealPeriod: "Breakfast",
+  mode: "Daily",
+});
 
 const productsAtStations = getProducts(menu);
 
@@ -14,7 +18,9 @@ for (const stationName in productsAtStations) {
     const stationProducts = productsAtStations[stationName];
     console.log(`${stationName}:`);
     stationProducts.forEach((product) => {
-      console.log("\t" + product.Product.MarketingName);
+      if (isProductImportant(product)) {
+        console.log("\t" + product.Product.MarketingName);
+      }
     });
   }
 }

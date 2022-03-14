@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "tsc",
+    "start": "node ."
+  },
   "name": "daily-briefing",
   "version": "1.0.0",
   "description": "A personal tool to generate a daily briefing",
