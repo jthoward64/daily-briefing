@@ -77,23 +77,30 @@ export async function getCampusDish(
   return (await campusDishApiData.json()) as CampusDishApiRoot;
 }
 
-export function getProducts(menu: CampusDishApiRoot): {
+export function getProducts(
+  menu: CampusDishApiRoot,
+  excludedStationIDs: string[]
+): {
   [key: string]: MenuProduct[];
 } {
   const stationsById: { [key: number]: MenuStation } = {};
 
   menu.Menu.MenuStations.forEach((station) => {
-    stationsById[station.StationId] = station;
+    if (!excludedStationIDs.includes(station.StationId)) {
+      stationsById[station.StationId] = station;
+    }
   });
 
   const products = menu.Menu.MenuProducts;
   const productsAtStations: { [key: string]: MenuProduct[] } = {};
   products.forEach((product) => {
-    const productStationName = stationsById[product.StationId].Name;
-    if (Array.isArray(productsAtStations[productStationName])) {
-      productsAtStations[productStationName].push(product);
-    } else {
-      productsAtStations[productStationName] = [product];
+    if (!excludedStationIDs.includes(product.StationId)) {
+      const productStationName = stationsById[product.StationId].Name;
+      if (Array.isArray(productsAtStations[productStationName])) {
+        productsAtStations[productStationName].push(product);
+      } else {
+        productsAtStations[productStationName] = [product];
+      }
     }
   });
   return productsAtStations;
