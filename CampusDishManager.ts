@@ -134,6 +134,7 @@ export function isProductImportant(menuProduct: MenuProduct): boolean {
 export async function assembleMenuSentence() {
   // Output the day's menu
   let menuSentence = "";
+  let wereProductsFound = false;
 
   // TODO use this api endpoint instead https://uky.campusdish.com/api/menu/GetMenuPeriods?locationId=11090&storeId=&date=03/21/2022&mode=Daily
   let todayMeals = ["Breakfast", "Lunch", "Dinner"] as (
@@ -176,6 +177,7 @@ export async function assembleMenuSentence() {
 
         menuSentence += `${stationName} is serving `;
         productNames.forEach((productName, i) => {
+          wereProductsFound = true;
           if (i > 0) {
             if (i === productNames.length - 1) {
               menuSentence += ", and ";
@@ -190,5 +192,7 @@ export async function assembleMenuSentence() {
     }
   }
 
-  return menuSentence;
+  return wereProductsFound
+    ? menuSentence
+    : "\nThe dining hall is probably closed today\n";
 }
