@@ -1,8 +1,8 @@
 {
-  "name": "daily-breifing",
+  "name": "daily-briefing",
   "version": "1.0.0",
-  "description": "A personal tool to generate a daily breifing",
-  "main": "index.js",
+  "description": "A personal tool to generate a daily briefing",
+  "main": "dist/index.js",
   "type": "module",
   "author": "Tag Howard",
   "license": "MIT",
