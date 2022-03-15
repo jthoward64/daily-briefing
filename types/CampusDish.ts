@@ -60,7 +60,7 @@ export interface Menu {
   MenuProducts: MenuProduct[];
   MenuStations: MenuStation[];
   ShowCategories: boolean;
-  Categories: Category2[];
+  Categories: Category[];
   DisplayPriceOnTheMenu: boolean;
   DisplayOnlyCurrentDayMenu: boolean;
   OnlyShowCurrentDaysOnlineOrdering: boolean;
@@ -220,14 +220,6 @@ export interface MenuStation {
   StationImageSitecorePathExntensionless: string;
 }
 
-export interface Category2 {
-  CategoryId: string;
-  DisplayName: string;
-  ImageUrl: any;
-  Description: any;
-  MenuRanking: number;
-}
-
 export interface Legend {
   Items: Item[];
   LinkUrl: any;
@@ -333,15 +325,10 @@ export interface Property {
 export interface TimeZoneInformation {
   Target: Target;
   ModelName: string;
-  Properties: any[];
+  Properties: Property[];
 }
 
 export interface Target {
   ModelName: string;
-  Properties: Property2[];
-}
-
-export interface Property2 {
-  Key: string;
-  Value: any;
+  Properties: Property[];
 }

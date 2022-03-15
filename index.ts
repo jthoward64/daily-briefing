@@ -25,6 +25,5 @@ export async function handler() {
     statusCode: 200,
     body: returnValue,
   };
-  console.log(response);
   return response;
 }
