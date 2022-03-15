@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "tsc",
-    "start": "node ."
+    "start": "node .",
+    "make-zip": "pwsh -Command \"Remove-Item -Recurse .\\out && mkdir .\\out && Copy-Item -Recurse node_modules .\\out\\node_modules && Copy-Item -Recurse dist .\\out\\dist && copy package.json .\\out && copy yarn.lock .\\out && Remove-Item -Recurse .\\out\\node_modules\\typescript && Remove-Item -Recurse .\\out\\node_modules\\@types && Compress-Archive -Path '.\\out\\*' -DestinationPath '.\\out\\output.zip'\""
   },
   "name": "daily-briefing",
   "version": "1.0.0",
@@ -16,7 +17,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "node": "^17.4.0",
+    "node": "14.4.0",
     "node-fetch": "^3.2.0"
   }
 }
