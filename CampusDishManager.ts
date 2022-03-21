@@ -3,9 +3,13 @@ import { MenuProduct } from "./types/CampusDish.js";
 
 const unimportantCategoryIDs = [
   "Condiments_11090",
-  "Sauces_11090",
   "Condiments_8328",
+  "Sauces_11090",
   "Sauces_8328",
+  "Salads_11090",
+  "Salads_8328",
+  "Sides_11090",
+  "Sides_8328",
 ];
 
 export function isProductImportant(menuProduct: MenuProduct): boolean {
@@ -37,7 +41,7 @@ export async function assembleMenuSentence() {
     | "Dinner"
     | "Brunch"
   )[];
-  const today = new Date("3/20/22");
+  const today = new Date();
   if (today.getDay() === 0 || today.getDay() === 6) {
     todayMeals = ["Brunch", "Dinner"] as (
       | "Breakfast"
